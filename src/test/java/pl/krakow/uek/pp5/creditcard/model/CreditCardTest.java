@@ -39,11 +39,16 @@ public class CreditCardTest {
     @Test
     public void withdrawFromCard(){
         //Arrange
-        CreditCard card  = new CreditCard("1313 1312 4423 5231");
-        card.assignLimit(BigDecimal.valueOf(1000));
+        CreditCard card1  = new CreditCard("1313 1312 4423 5231");
+        CreditCard card2  = new CreditCard("1313 1312 4423 5231");
+        card1.assignLimit(BigDecimal.valueOf(1000));
+        card2.assignLimit(BigDecimal.valueOf(1000));
+
         //Act
-        card.withdraw(BigDecimal.valueOf(500));
+        card1.withdraw(BigDecimal.valueOf(500));
+        card2.withdraw(BigDecimal.valueOf(100));
         //Assert
-        Assert.assertEquals(BigDecimal.valueOf(500),card.getCurrentBalance());
+        Assert.assertEquals(BigDecimal.valueOf(500),card1.getCurrentBalance());
+        Assert.assertEquals(BigDecimal.valueOf(900),card2.getCurrentBalance());
     }
 }
