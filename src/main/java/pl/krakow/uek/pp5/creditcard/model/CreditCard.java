@@ -17,4 +17,12 @@ public class CreditCard {
     public BigDecimal getLimit() {
         return cardLimit;
     }
+
+    public void withdraw(BigDecimal valueOf) {
+    }
+
+    public BigDecimal getCurrentBalance() {
+
+        return null;
+    }
 }
