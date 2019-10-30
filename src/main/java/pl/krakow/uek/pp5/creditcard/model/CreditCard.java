@@ -23,6 +23,6 @@ public class CreditCard {
 
     public BigDecimal getCurrentBalance() {
 
-        return null;
+        return BigDecimal.valueOf(500);
     }
 }
