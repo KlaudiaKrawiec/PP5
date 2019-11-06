@@ -5,25 +5,33 @@ import java.math.BigDecimal;
 public class CreditCard {
     private final String cardNumber;
     private BigDecimal cardLimit;
+    private BigDecimal balance;
 
-    public CreditCard(String cardNumber){
+    public CreditCard(String cardNumber) {
         this.cardNumber = cardNumber;
     }
 
-    public void assignLimit(BigDecimal valueOf) {
-        this.cardLimit = valueOf;
+    public void assignLimit(BigDecimal newLimit) {
+        if (BigDecimal.valueOf(100).compareTo(newLimit) == 1) {
+            throw new CreditCardBelowLimitException();
+        }
+        cardLimit = newLimit;
+        balance = newLimit;
     }
 
     public BigDecimal getLimit() {
         return cardLimit;
     }
 
-    public void withdraw(BigDecimal valueOf) {
-        //homework
+    public void withdraw(BigDecimal money) {
+        if (balance.compareTo(money) == -1)  {
+            throw new CreditCardBelowBalanceExeption();
+        }
+
+        balance = balance.subtract(money);
     }
 
     public BigDecimal getCurrentBalance() {
-
-        return BigDecimal.valueOf(500);
+        return balance;
     }
 }

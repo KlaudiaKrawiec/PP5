@@ -51,4 +51,14 @@ public class CreditCardTest {
         Assert.assertEquals(BigDecimal.valueOf(500),card1.getCurrentBalance());
         Assert.assertEquals(BigDecimal.valueOf(900),card2.getCurrentBalance());
     }
+
+    @Test(expected = CreditCardBelowBalanceExeption.class)
+    public void denyWithdrawBelowBalance() {
+        CreditCard card = new CreditCard("1234-5678");
+        card.assignLimit(BigDecimal.valueOf(1000));
+
+        card.withdraw(BigDecimal.valueOf(600));
+        card.withdraw(BigDecimal.valueOf(600));
+    }
 }
+
